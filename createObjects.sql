@@ -1,8 +1,7 @@
 create table admin
 (admin_id varchar(10) primary key,
  email varchar(50) unique,
- password varchar2(50) not null,
- admin_name varchar2(50))
+ password varchar2(50) not null)
  
 create table customer
 (customer_id varchar2(10) primary key,
@@ -47,9 +46,10 @@ create table order_data
  cart_id varchar2(10) references cart(cart_id) not null,
  customer_id varchar2(10) references customer(customer_id) not null,
  order_date date default sysdate,
- delivery_date date,
+ delivery_date date default sysdate + 7,
  coupon_id varchar2(10) not null,
  bill_amount number(10,2),
  payment_method varchar2(10) check(payment_method in ('COD','CREDIT','DEBIT','WALLET')))
+
 
 
